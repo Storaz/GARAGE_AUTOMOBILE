@@ -1,0 +1,130 @@
+PROGRAMME Garage_Automobile
+
+ //FONCTIONNALITES REALISEES: Création des types et enregistrement,des procédures création de garages et de voitures ainsi que de création des vérification du nombre de voitures.
+ //FONCTIONNALITES NON-REALISEES: Procédure de génération des différents paramètres des voitures,de validation des saisies ainsi que la procédure permettant d'associer les voitures aux garages
+
+
+
+//BUT:Créer les garages,voitures,les différents paramètres ainsi que valider les saisies et associer les voitures aux garages.
+//ENTREE:Informations sur le garage et sur les voitures ainsi que l'associement garage/voiture.
+//SORTIE:Afficher les garages et leur véhicules, le garage qui a le plus de véhicules,le véhicule le plus ancien,la moyenne des valeurs des véhicules,le véhicule vendu le plus cher à neuf ainsi que la recherche de véhicules à base de critères.
+
+CONST
+	max_voitures=15
+	min_voitures=6
+
+
+Type Garage=enregistrement //On enregistre les différents paramètres du garage
+	nom:CHAINE
+	numéro:ENTIER
+	voie:ENTIER
+	CP:ENTIER
+	pays:CHAINE
+	numero_tel:ENTIER
+	email:CHAINE
+FINENREGISTREMENT
+
+Type Tab_Garage: Tableau[1..2]de CHAINE //On initialise le tableau de garage
+
+Type Voiture=enregistrement //On enregistre les différents paramèters du garage
+	nbr_voitures:ENTIER
+	marque:CHAINE
+	modele:CHAINE
+	energie:CHAINE
+	puissance_fiscale:ENTIER
+	puissabce_dyn:ENTIER
+	couleur:CHAINE
+	options:CHAINE
+	annee_modele:ENTIER
+	prix_modele:ENTIER
+	cote_argus:ENTIER
+	date_circulation:ENTIER
+	age:ENTIER
+	plaque_immatriculation:CHAINE
+FINENREGISTREMENT
+
+Type Tab_Voiture: Tableau[1..2,6..15] de Tab_Garage //On initialise le tableau des voitures en prenant en compte les valeurs entrées lors de la saisie des garages
+
+Type Marque=(Opel,Audi,Peugeot,Renault,Skoda) //On énumère les différentes marques de voiture
+
+Type Energie=(Essence,Diesel,GPL,Electrique,Hybride) //On énumère les différentes types d'énergie des voitures
+
+
+PROCEDURE Crea_Garage(Tab_Gar:Tab_Garage) //Procédure permettant la création des deux garages
+
+VAR
+	x:ENTIER
+
+DEBUT
+	x=1 //On initialise le compteur
+	POUR x DE 1 A 2 FAIRE
+		REPETER
+			ECRIRE('Veuillez entrer le nom de votre garage')
+			LIRE Tab_Gar[x].nom //On associele paramètres au tableau afin de le réutiliser
+		TANT QUE  Tab_Gar[x].nom <>' ' //La case du tableau ne pourra pas être vide
+
+		REPETER
+			ECRIRE('Veuillez entrer le numero de voie de votre garage')
+			LIRE Tab_Gar[x].voie //On associele paramètres au tableau afin de le réutiliser
+		TANT QUE Tab_Gar[x].voie <>' ' //La case du tableau ne pourra pas être vide
+
+
+		REPETER
+			ECRIRE('Veuillez entrer le code postal de votre garage')
+			LIRE Tab_Gar[x].CP //On associele paramètres au tableau afin de le réutiliser
+		TANT QUE  Tab_Gar[x].CP <>' ' //La case du tableau ne pourra pas être vide
+
+		REPETER
+			ECRIRE('Veuillez entrer la ville de votre garage')
+			LIRE(Tab_Gar[x].ville) //On associele paramètres au tableau afin de le réutiliser
+		TANT QUE  Tab_Gar[x].ville <>' ' //La case du tableau ne pourra pas être vide
+
+		REPETER
+			ECRIRE('Veuillez entrer le pays de votre garage')
+			LIRE Tab_Gar[x].pays //On associele paramètres au tableau afin de le réutiliser
+		TANT QUE  Tab_Gar[x].pays <>' ' //La case du tableau ne pourra pas être vide
+
+		REPETER
+			ECRIRE('Veuillez entrer votre numero de telephone de votre garage')
+			LIRE Tab_Gar[x].numero_tel //On associele paramètres au tableau afin de le réutiliser
+		TANT QUE  Tab_Gar[x].numero_tel <>' ' //La case du tableau ne pourra pas être vide
+
+		REPETER
+			ECRIRE('Veuillez entrer votre email de votre garage')
+			LIRE Tab_Gar[x].email //On associele paramètres au tableau afin de le réutiliser
+		TANT QUE  Tab_Gar[x].email <>' ' //La case du tableau ne pourra pas être vide
+
+FINPROCEDURE
+
+PROCEDURE Crea_Nbr_Voiture(Tab_Voitu:Tab_Voiture) //Permet de connaître le nombre de voitures
+
+VAR
+	compteur_voitures:ENTIER //On initialise le compteur du nombre de voitures
+
+DEBUT
+	compteur_voitures<-6
+	ECRIRE('Veuillez entrer le nombre de voitures dans votre garage (entre 6 et 15)')
+	LIRE nbr_voitures //Le nombre de voiture servira pour déterminer plus tard combien de fois la boucle devra faire de vérifications
+FINPROCEDURE
+
+PROCEDURE Marque(Tab_Marque:Tab_Voitu)
+
+VAR
+
+DEBUT
+
+	POUR nbr_voitures DE 6 A 15 FAIRE //Pour réaliser l'action pour toutes les voitures
+		REPETER
+			ECRIRE(Tab_Marque.marque)
+		TANT QUE marque <>' '
+
+
+
+
+
+
+
+
+
+
+
